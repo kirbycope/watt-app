@@ -1,0 +1,2 @@
+function clearFields(){document.getElementById("message-span").style.visibility="hidden";document.getElementById("test-step-builder-description").value='';document.getElementById("test-step-builder-command").value='';document.getElementById("test-step-builder-target").value='';document.getElementById("test-step-builder-value").value='';}
+document.getElementById("test-step-builder-button-clear").onclick=function(){clearFields();}

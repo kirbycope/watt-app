@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WATTT</title>
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body>
+<div id="tutorial-div" class="tutorial-hidden">
+	<h2 id="tutorial-header"></h2>
+	<div id="tutorial-body"></div>
+	<div id="tutorial-button-div">
+		<button id="tutorial-button-close">Close</button>
+		<button id="tutorial-button-continue">Continue</button>
+	</div>
+</div>
+<section id="test-step-section" class="test-step-section-expand">
+    <header>
+		<a id="toolbar-new" href="#" title="New"></a>
+		<a id="toolbar-open" href="#" title="Open"></a>
+		<a id="toolbar-save" href="#" title="Save"></a>
+		<!-- <a id="toolbar-cloud-download" href="#" title="Get from Cloud"></a> -->
+		<a id="toolbar-expand" href="#" title="Expand Browser Window" class="toolbar-expand-default"></a>
+	</header>
+	<main class="test-step-main">
+		<section id="test-steps">
+			<div id="test-step-header">
+				<h1 id="test-step-header-content">Test Steps</h1>
+				<span id="status-span"></span>
+				<a id="clear-results-button" href="#" title="Clear Results"></a>
+				<a id="record-button" class="recording-off" href="#" title="Start Recording"></a>
+				<a id="stop-button" href="#" title="Stop"></a>
+				<a id="play-button" href="#" title="Play"></a>
+			</div>
+			<!-- The next few elements are in one line in source so that whitespace between them is ignored -->
+			<input id="select-deselect-all" type="checkbox" title="Deselect All Steps" checked></input><input id="base-url" type="text" placeholder="Base URL"></input><button id="expand-all" title="Expand All Steps">+</button><button id="remove-all" title="Remove All Steps">X</button>
+			<div id="test-steps-container">
+				<!-- Added/Loaded Test Steps Go Here -->
+			</div>
+		</section>
+	</main>
+	<footer>
+		<section id="test-step-builder">
+			<div id="test-step-builder-row-1">
+				<input id="test-step-builder-description" type="text" placeholder="Description"></input>
+			</div>
+			<div id="test-step-builder-row-2">
+				<!-- The next few elements are in one line in source so that whitespace between them is ignored -->
+				<select id="test-step-builder-command"><option value="" selected hidden>Command</option></select><input id="test-step-builder-target" type="text" placeholder="Target"></input><input id="test-step-builder-value" type="text" placeholder="Value"></input>
+			</div>
+			<div id="test-step-builder-row-3">
+				<!-- The next few elements are in one line in source so that whitespace between them is ignored -->
+				<button id="test-step-builder-button-add" type="button" title="Add to Test Steps">Add Step</button><span id="message-span"></span><button id="test-step-builder-button-clear" type="button" title="Clear Form">Clear Form</button>
+			</div>
+		</section>
+	</footer>
+	<div id="file-select-modal">
+		<div id="file-select-container">
+			<button id="file-select-close">Close</button>
+			<h2 style="padding-top: .5rem;">Open other file(s)</h2>
+			<div id="file-select-list">
+				<!-- Requested files go here -->
+			</div>
+		</div>
+	</div>
+</section>
+<section id="webview-section" class="webview-section">
+<header>
+	<div id="address-bar-wrapper">
+		<a id="webview-back" href="#" title="Back"></a>
+		<a id="webview-forward" href="#" title="Forward"></a>
+		<a id="webview-refresh" href="#" title="Refresh"></a>
+		<div id="webview-url-wrapper">
+			<input id="webview-url" type="text"></input>
+			<a id="webview-menu" href="#" title="Menu"></a>
+			<!-- http://www.quackit.com/css/codes/css_floating_menu.cfm -->
+			<div id="floating-menu">
+				<h3>Commands</h3>
+				<a id="verify-location" href="#" title="Verify Location">Verify Location</a>
+				<a id="verify-title" href="#" title="Verify Title">Verify Title</a>
+				<h3>Data</h3>
+				<a id="clear-all-caches" href="#" title="Clear All Caches">Clear All Caches</a>
+				<a id="clear-all-cookies" href="#" title="Clear All Cookies">Clear All Cookies</a>
+				<h3>Resize</h3>
+				<a id="resize-mobile" href="#" title="Mobile">Mobile</a>
+				<a id="resize-mobile-wide" href="#" title="Mobile-Wide">Mobile-Wide</a>
+				<a id="resize-tablet" href="#" title="Tablet">Tablet</a>
+				<a id="resize-desktop" href="#" title="Desktop">Desktop</a>
+				<a id="resize-desktop-wide" href="#" title="Desktop-Wide">Desktop-Wide</a>
+			</div>
+		</div>
+	</div>
+</header>
+	<div id="webview-div">
+		<webview id="webview" src="http://timothycope.com/html-test-page/"></webview>
+	</div>
+</section>
+	<!-- Scripts -->
+	<script src="js/add-test-step.js"></script>
+	<script src="js/app-onload.js"></script>
+	<script src="js/base-url.js"></script>
+	<script src="js/clear-test-step.js"></script>
+	<script src="js/command-execution.js"></script>
+	<script src="js/command-list.js"></script>
+	<script src="js/duplicate-step.js"></script>
+	<script src="js/expand.js"></script>
+	<script src="js/helper-text.js"></script>
+	<script src="js/js-string-bulider.js"></script>
+	<script src="js/log.js"></script>
+	<script src="js/new.js"></script>
+	<script src="js/open.js"></script>
+	<script src="js/playback-controls.js"></script>
+	<script src="js/queue.js"></script>
+	<script src="js/save.js"></script>
+	<script src="js/selectors.js"></script>
+	<script src="js/test-as-step.js"></script>
+	<script src="js/test-step-controls.js"></script>
+	<script src="js/tutorial.js"></script>
+	<script src="js/webview-context-menu.js"></script>
+	<script src="js/webview-controls.js"></script>
+	<script src="js/webview-onload.js"></script>
+</body>
+</html>

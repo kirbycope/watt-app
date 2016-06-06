@@ -1,0 +1,1 @@
+JS minified using a plugin called "JSTool" for Notepad++

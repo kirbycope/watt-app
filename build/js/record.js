@@ -1,0 +1,4 @@
+prevElement=null;function elementHighlighter(e){var elem=e.target||e.srcElement;if(prevElement!=null){prevElement.classList.remove('mouseOn');}
+elem.classList.add('mouseOn');prevElement=elem;};function clickRecorder(e){e=e||window.event;var target=e.target||e.srcElement;var action="";var locator="";var pattern="";locator=getClickedElementTarget(target);if(target.tagName=="SELECT"){action="select";pattern="index="+target.options.selectedIndex;}
+else{action="click";}
+var message={command:action,target:locator,value:pattern};document.messageSource.postMessage(message,document.messageOrigin);};document.addEventListener('mousemove',elementHighlighter,true);document.addEventListener('click',clickRecorder,false);

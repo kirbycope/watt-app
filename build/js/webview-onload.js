@@ -1,0 +1,12 @@
+window.aborted;window.loaded;window.loading;window.clickedElementTarget;window.clickedElementValue;function updateNavigationButtons(){if(webview.canGoBack()){document.getElementById("webview-back").style["background-image"]="";}
+else{document.getElementById("webview-back").style["background-image"]="url('/img/arrow-left-02_gray.png')";}
+if(webview.canGoForward()){document.getElementById("webview-forward").style["background-image"]="";}
+else{document.getElementById("webview-forward").style["background-image"]="url('/img/arrow-right-02_gray.png')";}};function updateReloadButton(){if(window.loading){document.getElementById("webview-refresh").title="Stop";document.getElementById("webview-refresh").style["background-image"]="url('/img/close-01_white.png')";document.getElementById("webview-refresh").onclick=function(){webview.stop();};}
+else{document.getElementById("webview-refresh").title="Refresh";document.getElementById("webview-refresh").style["background-image"]="";document.getElementById("webview-refresh").onclick=function(){webviewReload();}}}
+onload=function(){var loadabort=function(){window.aborted=true;window.loading=false;updateReloadButton();}
+var loadstart=function(){window.loading=true;updateReloadButton();}
+var loadstop=function(){window.loaded=true;window.loading=false;document.getElementById("webview-url").value=webview.src;updateNavigationButtons();updateReloadButton();if(!window.aborted){webview.executeScript({file:"js/webview-communication.js"},function(result){webview.contentWindow.postMessage('hello, webpage!',webview.src);});webview.executeScript({code:"(typeof getClickedElement == 'function')"},function(result){if(result[0]!=true){webview.executeScript({file:'js/context-menu-helper.js'},function(){});}});}
+if(window.record){webview.executeScript({code:"(typeof clickRecorder == 'function')"},function(result){if(result[0]!=true){injectRecordScript();}});}
+if(window.waitingForPageLoad){if(window.aborted){document.log.push("    [Error] Page load was aborted.");window.result=false;}else{window.result=window.loaded;}
+window.waitingForPageLoad=false;completeTask();}}
+webview.addEventListener("loadabort",loadabort);webview.addEventListener("loadstart",loadstart);webview.addEventListener("loadstop",loadstop);}

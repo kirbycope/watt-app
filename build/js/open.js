@@ -1,0 +1,9 @@
+function importFile(fileEntry){fileEntry.file(function(file){var reader=new FileReader();reader.onload=function(e){var htmlString=e.target.result;var tempHtmlDoc=document.createElement('html');tempHtmlDoc.innerHTML=htmlString;var baseUrl=tempHtmlDoc.getElementsByTagName('link')[0].href;if(baseUrl.endsWith('/')){baseUrl=baseUrl.substring(0,(baseUrl.length-1))}
+if(baseUrl.startsWith('chrome-extension')){baseUrl="";}
+document.getElementById("base-url").value=baseUrl;var testStepsBody=tempHtmlDoc.getElementsByTagName('tbody')[0];for(var i=0;i<testStepsBody.children.length;i++){var openDescription='';if(testStepsBody.children[i].previousSibling.previousSibling){if(testStepsBody.children[i].previousSibling.previousSibling.nodeName!='TR'){openDescription=testStepsBody.children[i].previousSibling.previousSibling.textContent.trim();}}
+var openCommand='';openCommand=testStepsBody.children[i].children[0].innerHTML;var openTarget='';if(testStepsBody.children[i].children[1]){openTarget=testStepsBody.children[i].children[1].innerHTML.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');}
+var openValue='';if(testStepsBody.children[i].children[2]){openValue=testStepsBody.children[i].children[2].innerHTML.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');}
+var openContinueOnFailure='false';openContinueOnFailure=testStepsBody.children[i].getAttribute("data-continueOnFailure")||'false';var openExecute='true';openExecute=testStepsBody.children[i].getAttribute("data-execute")||'true';createTestSteps(openDescription,openCommand,openTarget,openValue,openContinueOnFailure,openExecute);}};reader.readAsText(file);});}
+function openTest(){chrome.fileSystem.chooseEntry({type:'openFile',accepts:[{extensions:['html']}]},function(fileEntry){if(chrome.runtime.lastError){}
+if(fileEntry){newTest();importFile(fileEntry);}});}
+document.getElementById("toolbar-open").onclick=function(){openTest();}

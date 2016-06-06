@@ -1,0 +1,25 @@
+{
+	"manifest_version": 2,
+	"name": "WATT - Web Automation Testing Tool",
+	"short_name": "WATT",
+	"version": "0.1.0",
+	"description": "Recoord, Edit, Save, and Play Selenium IDE compatible* test cases.",
+	"minimum_chrome_version": "23",
+	"icons": {
+		"16": "img/icon-16.png",
+		"128": "img/icon-128.png"
+	},
+	"app": {
+		"background": {
+			"scripts": [
+				"js/app.js"
+			]
+		}
+	},
+	"permissions": [
+		"contextMenus",
+		{"fileSystem": ["write", "retainEntries", "directory"]},
+		"storage",
+		"webview"
+	]
+}

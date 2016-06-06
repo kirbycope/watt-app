@@ -1,0 +1,10 @@
+function jsSelectorBuilder(target){var jsSelector;if(target.startsWith("id=")){var id=target.substring(3,target.length);jsSelector="document.getElementById('"+id+"')";}
+if(target.startsWith("name=")){var targetName;var targetType;var targetValue;var indexOfType=target.indexOf("type=");var indexOfValue=target.indexOf("value=");if((indexOfType<0)&&(indexOfValue<0)){targetName=target.substring(5,target.length);jsSelector="document.querySelector('[name="+targetName+"]')";}
+if((indexOfType>=0)&&(indexOfValue<0)){targetType=target.substring(indexOfType+5,target.length);targetName=target.substring(5,(indexOfType-1));jsSelector="document.querySelector('[name="+targetName+"][type="+targetType+"]')";}
+if((indexOfType<0)&&(indexOfValue>=0)){targetValue=target.substring(indexOfValue+6,target.length);targetName=target.substring(5,(indexOfValue-1));jsSelector="document.querySelector('[name="+targetName+"][value="+targetValue+"]')";}
+if((indexOfType>=0)&&(indexOfValue>=0)){if(indexOfType>indexOfValue){targetValue=target.substring((indexOfValue+6),(indexOfType-1));targetType=target.substring((indexOfType+5),target.length);targetName=target.substring(5,(indexOfValue-1));}else{targetType=target.substring(indexOfType+5,(indexOfValue-1));targetValue=target.substring((indexOfValue+6),target.length);targetName=target.substring(5,(indexOfType-1));}
+jsSelector="document.querySelector('[name="+targetName+"][type="+targetType+"][value="+targetValue+"]')";}}
+if(target.startsWith("link=")){var targetLink=target.substring(5,target.length);targetLink=targetLink.replace("'","\\'");jsSelector="document.evaluate('//*[text()=\""+targetLink+"\"]', document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE).snapshotItem(0)";}
+if(target.startsWith("xpath=")){var targetXpath=target.substring(6,target.length);jsSelector="document.evaluate(\""+targetXpath+"\", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE).snapshotItem(0)";}
+if(target.startsWith("css=")){var targetCss=target.substring(4,target.length);jsSelector="document.querySelector('"+targetCss+"')";}
+return jsSelector;}

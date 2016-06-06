@@ -1,0 +1,1 @@
+document.messageSource;document.messageOrigin;addEventListener('message',function(e){if(!document.messageSource){if(e.data=="hello, webpage!"){document.messageSource=e.source;document.messageOrigin=e.origin;document.messageSource.postMessage("hello, host!",document.messageOrigin);}}else{}});

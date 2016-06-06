@@ -1,0 +1,1 @@
+All images optimized using https://tinypng.com/
